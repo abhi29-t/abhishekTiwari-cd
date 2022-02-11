@@ -1,0 +1,8 @@
+.menuItemActive {
+  border-bottom: 2px solid #ff0914;
+  text-decoration: none;
+}
+
+.menuItem {
+  text-decoration: none;
+}
