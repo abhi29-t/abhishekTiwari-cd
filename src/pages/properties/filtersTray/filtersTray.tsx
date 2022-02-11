@@ -11,28 +11,17 @@ import {
   Select,
 } from "@mui/material";
 
-// IMPORT CUSTOM HOOKS
-import useActions from "../../../hooks/useActions";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
+// IMPORT CONTROLLER
+import FiltersTrayController from "./FiltersTrayController";
 
-type FiltersTrayProps = {
+interface Args {
   filterPropertiesHandler: (enteredValues: any) => void;
   setResetList: () => void;
-};
+}
 
-const FiltersTray: React.FC<FiltersTrayProps> = (props) => {
-  const formikAttributes = {
-    initialValues: { prices: "", floor: "", bedroom: "", grossm2: "" },
-    submitHandler: props.filterPropertiesHandler,
-  };
-  const { fetchFiltersList } = useActions();
-  const { filtersList: filterOptions } = useTypedSelector(
-    (state) => state.propertiesPageState
-  );
-
-  useEffect(() => {
-    fetchFiltersList();
-  }, []);
+const FiltersTray: React.FC<Args> = (props) => {
+  const { formikAttributes, fetchFiltersList, filterOptions } =
+    FiltersTrayController(props);
   return (
     <Box>
       <Formik

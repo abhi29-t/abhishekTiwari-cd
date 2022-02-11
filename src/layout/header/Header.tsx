@@ -1,4 +1,7 @@
 import * as React from "react";
+import { NavLink } from "react-router-dom";
+
+// IMPORT MATERIAL UI
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,8 +13,8 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 
-import classes from "./Header.module.css";
-import { NavLink, useNavigate } from "react-router-dom";
+// IMPORT COMPONENTS
+import HeaderController from "./HeaderController";
 
 const MENU_OPTIONS = [
   { title: "Home", link: "/luxHomes/home" },
@@ -19,31 +22,15 @@ const MENU_OPTIONS = [
   { title: "Location", link: "/luxHomes/location" },
 ];
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 const Header = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const menuItemActiveHandler = (navData: { isActive: boolean }) => {
-    return navData.isActive ? classes.menuItemActive : classes.menuItem;
-  };
-  const navigate = useNavigate();
+  const {
+    navigate,
+    anchorElNav,
+    setAnchorElNav,
+    handleOpenNavMenu,
+    handleCloseNavMenu,
+    menuItemActiveHandler,
+  } = HeaderController();
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -105,7 +92,7 @@ const Header = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            LOGO
+            LUX
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {MENU_OPTIONS.map((menuItem) => (

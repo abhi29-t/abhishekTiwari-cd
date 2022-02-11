@@ -14,15 +14,12 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-
-// IMPORT CUSTOM STYLES
-import { useStyles } from "./propertyList.style";
-
-// IMPORT CONTROLLER
-import PropertyListcontroller from "./controller";
 import { Button } from "@mui/material";
 
-interface PropertyListProps {
+// IMPORT CUSTOM STYLES
+import { useStyles } from "./PropertyInfoCard.style";
+
+interface Args {
   uniqueID: number;
   bedroom: string;
   price: string;
@@ -36,9 +33,8 @@ interface PropertyListProps {
   view: string;
 }
 
-const PropertyInfoCard: React.FC<PropertyListProps> = (props) => {
+const PropertyInfoCard: React.FC<Args> = (props) => {
   const classes = useStyles();
-  const { hello } = PropertyListcontroller();
 
   return (
     <Card

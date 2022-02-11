@@ -1,27 +1,13 @@
-import React, { useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-
 // IMPORT MATERIAL UI
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 
-// IMPORT CUSTOM HOOKS
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import useActions from "../../hooks/useActions";
+// IMPORT COMPONENTS
 import Loader from "../../components/Loader";
+import ApartmentController from "./ApartmentController";
 
 const Apartment = () => {
-  const params = useParams();
-  const navigate = useNavigate();
-  const { fetchPropertyList } = useActions();
-  const { loading, propertyList } = useTypedSelector(
-    (state) => state.propertiesPageState
-  );
-
-  useEffect(() => {
-    if (propertyList.length === 0) {
-      fetchPropertyList();
-    }
-  }, []);
+  const { params, navigate, fetchPropertyList, loading, propertyList } =
+    ApartmentController();
 
   if (propertyList.length === 0 || loading) {
     return <Loader />;

@@ -1,11 +1,13 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Header from "./header";
-import Footer from "./footer";
-import Home from "../pages/home/Index";
-import Location from "../pages/location/Index";
-import Properties from "../pages/properties";
-import Apartment from "../pages/apartment/Index";
+
+// IMPORT COMPONENTS
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
+import Home from "../pages/home/Home";
+import Location from "../pages/location/Location";
+import Properties from "../pages/properties/Properties";
+import Apartment from "../pages/apartment/Apartment";
 import NotFound from "../pages/NotFound";
 
 const AppLayout = () => {
